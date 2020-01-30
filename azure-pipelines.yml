@@ -4,8 +4,8 @@
 trigger:
 - master
 
-#pool: 'Default'
-pool: 'AzureVms'
+pool: 'Default'
+#pool: 'AzureVms'
 
 steps:
 
