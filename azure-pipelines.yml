@@ -14,7 +14,7 @@ steps:
   inputs:
     Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
     displayController: '1'
-
+  condition: always
 
 # All params are set
 - task: ExecMicroFocusTests@0
@@ -28,6 +28,7 @@ steps:
     displayController: '1'
     fsTimeout: '10'
     resultsFilename: 'logs.xml'
+  condition: always
 
 
 # Longer scenario path ->
@@ -36,3 +37,4 @@ steps:
     Test1: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scen2.lrs'
     fsReportPath: 'C:\Scenarios-Multiple-Specified-Directory'
     analysisTemplate: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\templates\MyTemplate1\MyTemplate1.tem'
+  condition: always
