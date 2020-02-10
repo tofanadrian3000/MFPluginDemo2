@@ -20,8 +20,7 @@ steps:
 - task: ExecMicroFocusTests@0
   inputs:
     Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
-    fsTimeout: '10'
-    resultsFilename: 'logs.xml'
+    threatFailureAsError: false
   condition: always()
 
 
