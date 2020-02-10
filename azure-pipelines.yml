@@ -20,6 +20,7 @@ steps:
 - task: ExecMicroFocusTests@0
   inputs:
     Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
+    fsTimeout: '20'
   condition: always()
 
 
