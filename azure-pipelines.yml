@@ -10,11 +10,11 @@ pool: 'Default'
 steps:
 
 # Default configuration (on a single scenario given by absolute path)-> default parameters are not required 
-- task: ExecMicroFocusTests@0
-  inputs:
-    Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
-    displayController: '1'
-  condition: always()
+# - task: ExecMicroFocusTests@0
+#   inputs:
+#     Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
+#     displayController: '1'
+#   condition: always()
 
 # All params are set
 - task: ExecMicroFocusTests@0
@@ -31,10 +31,10 @@ steps:
   condition: always()
 
 
-# Longer scenario path ->
-- task: ExecMicroFocusTests@0
-  inputs:
-    Test1: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scen2.lrs'
-    fsReportPath: 'C:\Scenarios-Multiple-Specified-Directory'
-    analysisTemplate: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\templates\MyTemplate1\MyTemplate1.tem'
-  condition: always()
+# # Longer scenario path ->
+# - task: ExecMicroFocusTests@0
+#   inputs:
+#     Test1: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scen2.lrs'
+#     fsReportPath: 'C:\Scenarios-Multiple-Specified-Directory'
+#     analysisTemplate: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\templates\MyTemplate1\MyTemplate1.tem'
+#   condition: always()
