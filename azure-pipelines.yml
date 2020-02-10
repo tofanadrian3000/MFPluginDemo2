@@ -20,7 +20,6 @@ steps:
 - task: ExecMicroFocusTests@0
   inputs:
     Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
-    threatFailureAsError: false
   condition: always()
 
 
