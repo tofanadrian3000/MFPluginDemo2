@@ -4,8 +4,8 @@
 trigger:
 - master
 
-pool: 'Default'
-#pool: 'AzureVms'
+#pool: 'Default'
+pool: 'AzureVms'
 
 steps:
 
@@ -19,8 +19,7 @@ steps:
 # All params are set
 - task: ExecMicroFocusTests@0
   inputs:
-    Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
-    fsTimeout: '20'
+    Test1: 'C:\Scenarios-Multiple2\RealScenario.lrs'
   condition: always()
 
 
