@@ -9,24 +9,21 @@ pool: 'AzureVms'
 
 steps:
 
-# Default configuration (on a single scenario given by absolute path)-> default parameters are not required 
-# - task: ExecMicroFocusTests@0
-#   inputs:
-#     Test1: 'C:\Scenarios-Multiple2\Scen1.lrs'
-#     displayController: '1'
-#   condition: always()
-
 # All params are set
 - task: ExecMicroFocusTests@0
   inputs:
-    Test1: 'C:\Scenarios-Multiple2\RealScenario.lrs'
+    Test1: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
+
+
+- task: ExecMicroFocusTests@0
+  inputs:
+    Test1: 'C:\Scenarios-None'
   condition: always()
 
 
-# # Longer scenario path ->
-# - task: ExecMicroFocusTests@0
-#   inputs:
-#     Test1: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scen2.lrs'
-#     fsReportPath: 'C:\Scenarios-Multiple-Specified-Directory'
-#     analysisTemplate: 'C:\Scenarios-Multiple\Scenarios-Single\Scenarios-Single\Scenarios-Single\Scenarios-Single\templates\MyTemplate1\MyTemplate1.tem'
-#   condition: always()
+- task: ExecMicroFocusTests@0
+  inputs:
+    Test1: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
+    fsReportPath: 'C:\SpecifiedFolder'
+    threatFailureAsError: false
+  condition: always()
