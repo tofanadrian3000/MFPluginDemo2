@@ -9,18 +9,21 @@ pool: 'AzureVms'
 
 steps:
 
-# All params are set
+# Default configuration (on an absolute path to the scenario)
+#   -> default parameters are not required
 - task: ExecMicroFocusTests@0
   inputs:
     Test1: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
 
 
+# Default configuration on a folder that doesn't contain any scenario
 - task: ExecMicroFocusTests@0
   inputs:
     Test1: 'C:\Scenarios-None'
   condition: always()
 
 
+# Same scenario as above but this time the task won't be marked as failed 
 - task: ExecMicroFocusTests@0
   inputs:
     Test1: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
