@@ -1,6 +1,4 @@
 
-# Pipeline used to test MF tests extension on scenario  
-
 trigger:
 - master
 
