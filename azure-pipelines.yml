@@ -9,22 +9,22 @@ steps:
 
 # Default configuration (on an absolute path to the scenario)
 #   -> default parameters are not required
-- task: ExecMicroFocusTests@0
+- task: ExecMicroFocusTestsDemo6@0
   inputs:
-    Test1: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
-
+    SourcePath: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
+    #BuildLabel: 'Build-$(Build.BuildNumber)'
 
 # Default configuration on a folder that doesn't contain any scenario
-- task: ExecMicroFocusTests@0
+- task: ExecMicroFocusTestsDemo6@0
   inputs:
-    Test1: 'C:\Scenarios-None'
+    SourcePath: 'C:\Scenarios-None'
   condition: always()
 
 
 # Same scenario as above but this time the task won't be marked as failed 
-- task: ExecMicroFocusTests@0
+- task: ExecMicroFocusTestsDemo6@0
   inputs:
-    Test1: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
-    fsReportPath: 'C:\SpecifiedFolder'
-    threatFailureAsError: false
+    SourcePath: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
+    ResultsDirectory: 'C:\SpecifiedFolder'
+    ThreatFailuresAsErrors: false
   condition: always()
