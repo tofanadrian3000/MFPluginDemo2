@@ -28,3 +28,4 @@ steps:
     ResultsDirectory: 'C:\SpecifiedFolder'
     ThreatFailuresAsErrors: false
   condition: always()
+
