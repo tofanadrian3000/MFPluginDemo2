@@ -43,5 +43,5 @@ steps:
 - task: ExecuteLoadRunnerTestsRelease@1
   inputs:
     SourcePath: 'C:\Scenarios-Multiple'
-    ScenarioExecutionTimeout: 1;
-    ControllerPollingInterval: 50;
+    ScenarioExecutionTimeout: '1'
+    ControllerPollingInterval: '50'
