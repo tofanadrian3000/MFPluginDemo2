@@ -2,7 +2,8 @@
 trigger:
 - master
 
-pool: 'Win2016'
+pool: 'Win8.1'
+#pool: 'Win2016'
 #pool: 'Default'
 #pool: 'AzureVms'
 
@@ -10,22 +11,11 @@ steps:
 
 # Default configuration (on an absolute path to the scenario)
 #   -> default parameters are not required
-- task: ExecMicroFocusTestsDemo7@0
+- task: ExecuteLoadRunnerTestsRelease@1
   inputs:
-    SourcePath: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
+    SourcePath: 'C:\Scenarios-Multiple'
 
-# Default configuration on a folder that doesn't contain any scenario
-- task: ExecMicroFocusTestsDemo7@0
+- task: ExecuteLoadRunnerTestsRelease@1
   inputs:
-    SourcePath: 'C:\Scenarios-None'
-  condition: always()
-
-
-# Same scenario as above but this time the task won't be marked as failed 
-- task: ExecMicroFocusTestsDemo7@0
-  inputs:
-    SourcePath: 'C:\Scenarios-Single\8UsersFailedScenario.lrs'
-    ResultsDirectory: 'C:\SpecifiedFolder'
-    ThreatFailuresAsErrors: false
-  condition: always()
-
+    SourcePath: 'C:\Scenarios-Failing'
+    ResultsDirectory: 'C:\LR'
