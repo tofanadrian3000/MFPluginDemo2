@@ -2,22 +2,46 @@
 trigger:
 - master
 
-#pool: 'Win8.1' # Everything worked as expected
-pool: 'Win2016'
-#pool: 'Default'
+# pool: 'Win8.1' # Everything worked as expected
+# pool: 'Win2016' # Everything worked as expected
+pool: 'Default'
 #pool: 'AzureVms'
 
 steps:
 
-- task: ExecuteLoadRunnerTestsRelease@1
-  inputs:
-    SourcePath: 'C:\Scenarios-Failing'
-    # ResultsDirectory: 'C:\LR'
-    TreatFailuresAsErrors: false
+# Source path = multiple scenario directory
+# Same resultsDirectory parameter value=>
+#   same url
+# task should not be failed because treatFailuresAsErrors: false
+# - task: ExecuteLoadRunnerTestsRelease@1
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Failing'
+#     TreatFailuresAsErrors: false
 
 
-# Default configuration (on an absolute path to the scenario)
-#   -> default parameters are not required
+# Different resultsDirectory parameter =>
+#   different urls
+# task should be failed -> job should be failed
+# - task: ExecuteLoadRunnerTestsRelease@1
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Failing'
+#     ResultsDirectory: 'C:\LR'
+
+
+# Default configuration
+# Source path = multiple scenario directory
+# All of them should pass
+# - task: ExecuteLoadRunnerTestsRelease@1
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Multiple'
+
+
+# Default configuration
+# Source path = multiple scenario directory
+# All of them should pass
+# ScenarioExecutionTimeout for all of them
 - task: ExecuteLoadRunnerTestsRelease@1
   inputs:
     SourcePath: 'C:\Scenarios-Multiple'
+    ScenarioExecutionTimeout: 1;
+    ControllerPollingInterval: 50;
