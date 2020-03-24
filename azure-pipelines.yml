@@ -2,20 +2,22 @@
 trigger:
 - master
 
-pool: 'Win8.1'
-#pool: 'Win2016'
+#pool: 'Win8.1' # Everything worked as expected
+pool: 'Win2016'
 #pool: 'Default'
 #pool: 'AzureVms'
 
 steps:
+
+- task: ExecuteLoadRunnerTestsRelease@1
+  inputs:
+    SourcePath: 'C:\Scenarios-Failing'
+    # ResultsDirectory: 'C:\LR'
+    TreatFailuresAsErrors: false
+
 
 # Default configuration (on an absolute path to the scenario)
 #   -> default parameters are not required
 - task: ExecuteLoadRunnerTestsRelease@1
   inputs:
     SourcePath: 'C:\Scenarios-Multiple'
-
-- task: ExecuteLoadRunnerTestsRelease@1
-  inputs:
-    SourcePath: 'C:\Scenarios-Failing'
-    ResultsDirectory: 'C:\LR'
