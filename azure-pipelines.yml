@@ -4,14 +4,12 @@ trigger:
 
 # pool: 'Win8.1' # Everything worked as expected
 # pool: 'Win2016' # Everything worked as expected
-pool: 'Default'
-#pool: 'AzureVms'
+# pool: 'Default' # Everything worked as expected
+pool: 'AzureVms'
 
 steps:
 
 # Source path = multiple scenario directory
-# Same resultsDirectory parameter value=>
-#   same url
 # task should not be failed because treatFailuresAsErrors: false
 # - task: ExecuteLoadRunnerTestsRelease@1
 #   inputs:
@@ -29,6 +27,8 @@ steps:
 
 
 # Default configuration
+# Same resultsDirectory parameter value=>
+#   same url
 # Source path = multiple scenario directory
 # All of them should pass
 # - task: ExecuteLoadRunnerTestsRelease@1
@@ -38,10 +38,46 @@ steps:
 
 # Default configuration
 # Source path = multiple scenario directory
-# All of them should pass
+# All of them should pass even if they will reach timeout
 # ScenarioExecutionTimeout for all of them
+# - task: ExecuteLoadRunnerTestsRelease@1
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Multiple'
+#     ScenarioExecutionTimeout: '1'
+#     ControllerPollingInterval: '50'
+
+
+
+# Test for manual publish of artifacts and test results
 - task: ExecuteLoadRunnerTestsRelease@1
   inputs:
     SourcePath: 'C:\Scenarios-Multiple'
-    ScenarioExecutionTimeout: '1'
-    ControllerPollingInterval: '50'
+    TreatFailuresAsErrors: false
+    PublishArtifactsManually: true
+    BuildArtifactsDirectory: 'C:\Custom Artifacts Directory'
+    PublishTestReportsManually: true
+    BuildTestReportsDirectory: 'C:\Custom Report Directory'
+
+- task: ExecuteLoadRunnerTestsRelease@1
+  inputs:
+    SourcePath: 'C:\Scenarios-Multiple2\Scenarios-Single\Scenarios Single\Scenarios-Single\Scenarios Single'
+    ResultsDirectory: 'C:\LR'
+    AnalysisTemplate: 'C:\Scenarios-Multiple2\templates\MyTemplate1\MyTemplate1.tem'
+    TreatFailuresAsErrors: false
+    PublishArtifactsManually: true
+    BuildArtifactsDirectory: 'C:\Custom Artifacts Directory'
+    PublishTestReportsManually: true
+    BuildTestReportsDirectory: 'C:\Custom Report Directory'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'C:\Custom Artifacts Directory'
+    ArtifactName: 'LoadRunnerArtifacts'
+    publishLocation: 'Container'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/Report.xml'
+    searchFolder: 'C:\Custom Report Directory'
+    mergeTestResults: true
