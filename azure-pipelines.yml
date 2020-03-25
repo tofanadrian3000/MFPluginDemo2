@@ -61,7 +61,7 @@ steps:
 
 - task: ExecuteLoadRunnerTestsRelease@1
   inputs:
-    SourcePath: 'C:\Scenarios-Multiple2\Scenarios-Single\Scenarios Single\Scenarios-Single\Scenarios Single'
+    SourcePath: 'C:\Scenarios-Multiple2'
     ResultsDirectory: 'C:\LR'
     AnalysisTemplate: 'C:\Scenarios-Multiple2\templates\MyTemplate1\MyTemplate1.tem'
     TreatFailuresAsErrors: false
