@@ -50,35 +50,42 @@ steps:
 
 
 # Test for manual publish of artifacts and test results
-- task: ExecuteLoadRunnerTestsRelease@1
+# - task: ExecuteLoadRunnerTestsRelease@1
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Multiple'
+#     TreatFailuresAsErrors: false
+#     PublishArtifactsManually: true
+#     BuildArtifactsDirectory: 'C:\Custom Artifacts Directory'
+#     PublishTestReportsManually: true
+#     BuildTestReportsDirectory: 'C:\Custom Report Directory'
+
+# - task: ExecuteLoadRunnerTestsRelease@1
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Multiple2'
+#     ResultsDirectory: 'C:\LR'
+#     AnalysisTemplate: 'C:\Scenarios-Multiple2\templates\MyTemplate1\MyTemplate1.tem'
+#     TreatFailuresAsErrors: false
+#     PublishArtifactsManually: true
+#     BuildArtifactsDirectory: 'C:\Custom Artifacts Directory'
+#     PublishTestReportsManually: true
+#     BuildTestReportsDirectory: 'C:\Custom Report Directory'
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: 'C:\Custom Artifacts Directory'
+#     ArtifactName: 'LoadRunnerArtifacts'
+#     publishLocation: 'Container'
+
+# - task: PublishTestResults@2
+#   inputs:
+#     testResultsFormat: 'JUnit'
+#     testResultsFiles: '**/*Report.xml'
+#     searchFolder: 'C:\Custom Report Directory'
+#     mergeTestResults: true
+
+- task: ExecuteLoadRunnerProfessionalLastTest@0
   inputs:
     SourcePath: 'C:\Scenarios-Multiple'
+    ControllerPollingInterval: '35'
+    ScenarioExecutionTimeout: '12'
     TreatFailuresAsErrors: false
-    PublishArtifactsManually: true
-    BuildArtifactsDirectory: 'C:\Custom Artifacts Directory'
-    PublishTestReportsManually: true
-    BuildTestReportsDirectory: 'C:\Custom Report Directory'
-
-- task: ExecuteLoadRunnerTestsRelease@1
-  inputs:
-    SourcePath: 'C:\Scenarios-Multiple2'
-    ResultsDirectory: 'C:\LR'
-    AnalysisTemplate: 'C:\Scenarios-Multiple2\templates\MyTemplate1\MyTemplate1.tem'
-    TreatFailuresAsErrors: false
-    PublishArtifactsManually: true
-    BuildArtifactsDirectory: 'C:\Custom Artifacts Directory'
-    PublishTestReportsManually: true
-    BuildTestReportsDirectory: 'C:\Custom Report Directory'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: 'C:\Custom Artifacts Directory'
-    ArtifactName: 'LoadRunnerArtifacts'
-    publishLocation: 'Container'
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/*Report.xml'
-    searchFolder: 'C:\Custom Report Directory'
-    mergeTestResults: true
