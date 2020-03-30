@@ -12,19 +12,18 @@ steps:
 
 # Source path = multiple scenario directory
 # task should not be failed because treatFailuresAsErrors: false
-# - task: ExecuteLoadRunnerTestsRelease@1
-#   inputs:
-#     SourcePath: 'C:\Scenarios-Failing'
-#     TreatFailuresAsErrors: false
-
+- task: ExecuteLoadRunnerProfessional@0
+  inputs:
+    SourcePath: 'C:\Scenarios-Failing'
+    TreatFailuresAsErrors: false
 
 # Different resultsDirectory parameter =>
 #   different urls
 # task should be failed -> job should be failed
-# - task: ExecuteLoadRunnerTestsRelease@1
-#   inputs:
-#     SourcePath: 'C:\Scenarios-Failing'
-#     ResultsDirectory: 'C:\LR'
+- task: ExecuteLoadRunnerProfessional@0
+  inputs:
+    SourcePath: 'C:\Scenarios-Failing'
+    ResultsDirectory: 'C:\LR'
 
 
 # Default configuration
@@ -83,7 +82,7 @@ steps:
 #     searchFolder: 'C:\Custom Report Directory'
 #     mergeTestResults: true
 
-- task: ExecuteLoadRunnerProfessionalLastTest@0
+- task: ExecuteLoadRunnerProfessional@0
   inputs:
     SourcePath: 'C:\Scenarios-Multiple'
     ControllerPollingInterval: '35'
