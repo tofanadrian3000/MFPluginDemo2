@@ -5,7 +5,7 @@ trigger:
 # pool: 'Win8.1' # Everything worked as expected
 # pool: 'Win2016' # Everything worked as expected
 # pool: 'Default' # Everything worked as expected
-pool: 'AzureVms' # Everything worked as expected
+# pool: 'AzureVms' # Everything worked as expected
 # pool: 'Win2019' # Everything worked as expected
 
 steps:
@@ -14,7 +14,7 @@ steps:
 # task should not be failed because treatFailuresAsErrors: false
 - task: ExecuteLoadRunnerProfessional@0
   inputs:
-    SourcePath: 'C:\Scenarios-Multiple'
+    SourcePath: 'C:\Scenarios'
     TreatFailuresAsErrors: false
 
 # Different resultsDirectory parameter =>
