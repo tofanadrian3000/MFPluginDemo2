@@ -5,8 +5,8 @@ trigger:
 # pool: 'Win8.1' # Everything worked as expected
 # pool: 'Win2016' # Everything worked as expected
 # pool: 'Default' # Everything worked as expected
-# pool: 'AzureVms' # Everything worked as expected
-pool: 'Win2019' # Everything worked as expected
+pool: 'AzureVms' # Everything worked as expected
+# pool: 'Win2019' # Everything worked as expected
 
 steps:
 
@@ -14,16 +14,16 @@ steps:
 # task should not be failed because treatFailuresAsErrors: false
 - task: ExecuteLoadRunnerProfessional@0
   inputs:
-    SourcePath: 'C:\Scenarios-Failing'
+    SourcePath: 'C:\Scenarios-Multiple'
     TreatFailuresAsErrors: false
 
 # Different resultsDirectory parameter =>
 #   different urls
-# task should be failed -> job should be failed
-- task: ExecuteLoadRunnerProfessional@0
-  inputs:
-    SourcePath: 'C:\Scenarios-Failing'
-    ResultsDirectory: 'C:\LR'
+# # task should be failed -> job should be failed
+# - task: ExecuteLoadRunnerProfessional@0
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Failing'
+#     ResultsDirectory: 'C:\LR'
 
 
 # Default configuration
@@ -82,9 +82,9 @@ steps:
 #     searchFolder: 'C:\Custom Report Directory'
 #     mergeTestResults: true
 
-- task: ExecuteLoadRunnerProfessional@0
-  inputs:
-    SourcePath: 'C:\Scenarios-Multiple'
-    ControllerPollingInterval: '35'
-    ScenarioExecutionTimeout: '12'
-    TreatFailuresAsErrors: false
+# - task: ExecuteLoadRunnerProfessional@0
+#   inputs:
+#     SourcePath: 'C:\Scenarios-Multiple'
+#     ControllerPollingInterval: '35'
+#     ScenarioExecutionTimeout: '12'
+#     TreatFailuresAsErrors: false
